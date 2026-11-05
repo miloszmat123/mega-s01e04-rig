@@ -1,6 +1,5 @@
-import { Hono } from 'hono';
 import { afterEach, expect, it, vi } from 'vitest';
-import { registerDigestJson } from '../src/digest/json-route.js';
+import { createApp } from '../src/app.js';
 import * as reader from '../src/digest/reader.js';
 import type { NightDigest } from '../src/digest/types.js';
 
@@ -24,8 +23,7 @@ it('returns the shared digest unchanged and delegates night selection to the rea
     counts: { ok: 1, retry: 1, fail: 0 },
   };
   const readNight = vi.spyOn(reader, 'readNight').mockResolvedValue(digest);
-  const app = new Hono();
-  registerDigestJson(app, config);
+  const app = createApp(config);
 
   const response = await app.request('/api/digest/2026-10-28');
 
@@ -37,8 +35,7 @@ it('returns the shared digest unchanged and delegates night selection to the rea
 
 it.each(['2026-10-29', 'invalid'])('returns 404 when the reader returns null for %s', async (night) => {
   vi.spyOn(reader, 'readNight').mockResolvedValue(null);
-  const app = new Hono();
-  registerDigestJson(app, config);
+  const app = createApp(config);
 
   expect((await app.request(`/api/digest/${night}`)).status).toBe(404);
 });
