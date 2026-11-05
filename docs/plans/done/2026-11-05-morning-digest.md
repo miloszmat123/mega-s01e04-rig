@@ -1,8 +1,9 @@
 ---
 plan: morning-digest
-status: ready
+status: done
 owner: rook
 opened: 2026-10-29
+closed: 2026-11-05
 ---
 
 # Morning digest
@@ -77,3 +78,26 @@ page again with `LANE_MARKER` unset (the banner reads "no marker set") and uploa
 link. Move this plan to `docs/plans/done/` with its issue list.
 
 Done when: the preview link no longer shows the lane marker.
+
+## Issues
+
+| Source section | Issue |
+|---|---|
+| §1 · Run log reader | https://github.com/miloszmat123/mega-s01e04-rig/issues/1 |
+| §2a · Page | https://github.com/miloszmat123/mega-s01e04-rig/issues/2 |
+| §2b · JSON | https://github.com/miloszmat123/mega-s01e04-rig/issues/3 |
+| §2c · Board link | https://github.com/miloszmat123/mega-s01e04-rig/issues/4 |
+| §2d · Route tests | https://github.com/miloszmat123/mega-s01e04-rig/issues/5 |
+| §3 · Preview for review | https://github.com/miloszmat123/mega-s01e04-rig/issues/6 |
+| §4 · Clean up | https://github.com/miloszmat123/mega-s01e04-rig/issues/7 |
+
+## Completion note
+
+The preview was reviewed, and the human approved marker-free replacement and finishing the
+plan. The page was overwritten at the [same public URL](https://miloszmat123.github.io/mega-s01e04-rig/)
+with the marker unset. The coordinator verified an unauthenticated fetch showed "no marker set",
+the original lane marker was absent, and the content hash exactly matched the marker-unset
+local export. No preview artifact was retained.
+
+GitHub Pages workflow run 42107214982 succeeded: all 33 tests and typecheck passed. Source
+fixtures and the root README remained unchanged.
