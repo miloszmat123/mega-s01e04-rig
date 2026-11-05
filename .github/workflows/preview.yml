@@ -42,6 +42,7 @@ jobs:
           LANE_MARKER: ${{ inputs.with_marker && secrets.LANE_MARKER || '' }}
           WITH_MARKER: ${{ inputs.with_marker }}
         run: |
+          if [ "$WITH_MARKER" != true ]; then unset LANE_MARKER; fi
           node --input-type=module <<'NODE'
           if (process.env.WITH_MARKER === 'true' && !process.env.LANE_MARKER?.trim()) {
             throw new Error('The requested preview requires LANE_MARKER.');
